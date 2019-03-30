@@ -1,5 +1,3 @@
-import { url } from "inspector";
-
 var selectedFile;
 
 var config = {
@@ -12,7 +10,7 @@ firebase.initializeApp(config);
 
 function logOut(){
 	console.log("Attempting Sign Out");
-	Firebase.auth().signOut().then(function() {
+	firebase.auth().signOut().then(function() {
     	console.log("Sign out successful");
     	document.location.href = "facultyLogin.html";
   	}).catch(function(error) {
