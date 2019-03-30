@@ -25,14 +25,14 @@ function foo(){
         }).then(function(){                                     //when login is complete, only then.....
         var user = firebase.auth().currentUser;
             if(user!=null){
-                document.location.href = "adminScreen.html";
                 console.log("Admin Login Success");
+                document.location.href = "adminScreen.html";
             }
             else{
                 console.log("Login Unsuccessful");
                 M.toast({html: 'Invalid credentials! Please try again!'});
             }
         });
-    console.log("outside");
+    // console.log("outside");
 
 }

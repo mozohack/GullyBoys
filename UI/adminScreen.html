@@ -8,7 +8,6 @@
         <script src="js/materialize.min.js"></script>
         <link rel="stylesheet" href="css/materialize.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        
         <style>
             body {
                 display: flex;
@@ -19,13 +18,10 @@
             main {
                 flex: 1 0 auto;
             }
-            label{
-                font-size: 40px;
-            }
         </style>
     </head>
     <body>
-        <!----------------- NAVIGATION BAR ----------->
+            
         <nav>
             <div class="nav-wrapper">
                 <a href="index.html" class="brand-logo"><i class="material-icons">speaker_notes</i></a>
@@ -34,48 +30,29 @@
                 </ul>
             </div>
         </nav>
-        <!------------------------- LOG OUT BUTTON  ------------->
-        <div class="container" style="padding-top:50px">
-                <a class="waves-effect waves-light btn" onClick="logOut()">Log Out</a>
-          </div>
-             <!----------------------------- MAIN BODY ------------------->
-        <div class="container" style="padding-top: 200px; padding-bottom: 200px">
-                <div class="row center">
-                    <h4>All field are mandatory</h4>
-                </div>
-                <div class="row">
-                    <form class="col s6">
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input placeholder="Ex. RA1711003010350" id="studentregno" type="text">
-                                <label class="red-text">Student's Registration Number*</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input type="text" id="studentname" placeholder="Ex. Elon Musk">
-                                <label class="red-text">Student's Full Name</label>
-                            </div>
-                        </div>
-                        <a class="waves-effect waves-light btn-large" onclick="xxxxxxxxxxxxxxxxxxxxxxxx()">Submit details</a>
-                    </form>
             
-            <!----------------------------- IMAGE HERE ----------------------->
-                    <label class="btn white" style="background-image:url('img/dp.png'); height: 400px; width:400px;background-repeat: no-repeat;background-size: cover">
-                        <input type="file" id="file" style="visibility:hidden">
-                    </label>
-                    
-                </div>
-                    
-                
+        <div class="container">
             
-    
-    
-    
-    
-            </div>  <!--CONTAINER DIV-->
+            <h1 class="center">Welcome, Administrator</h1>
+
+            <br><br><br><br>
+            <h4 class="center">Choose the day order for which you want to see the student statistics.</h4>
+                <div class="input-field col s12">
+                    <select>
+                        <option value="1">Day Order 1</option>
+                        <option value="2">Day Order 2</option>
+                        <option value="3">Day Order 3</option>
+                    </select>
+                    <label>Day Order List</label>
+                </div>
+            <br><br><br><br>
+            
+            
+            <button onClick="foo()">idhar dabao</button>   
+            
+        </div>
         
-    
+          
     </body>
 
 
@@ -123,7 +100,7 @@
 
         <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
         
-        <script src="js/upload.js"></script>
+        <script src="js/adminScreen.js"></script>
 
         <script>
             require('./renderer.js');
