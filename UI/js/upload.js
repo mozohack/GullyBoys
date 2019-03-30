@@ -43,7 +43,8 @@ function uploadFile(){
         // Handle successful uploads on complete
         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
         	uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-          	console.log('File available at', downloadURL);
+			  console.log('File available at', downloadURL);
+			  M.toast({html:'Data has been uploaded to the server'});
         });
       });
 };
