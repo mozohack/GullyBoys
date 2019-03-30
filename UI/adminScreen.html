@@ -25,12 +25,15 @@
         <nav>
             <div class="nav-wrapper">
                 <a href="index.html" class="brand-logo"><i class="material-icons">speaker_notes</i></a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="index.html">Sass</a></li>
-                </ul>
             </div>
         </nav>
             
+        <!------------------------- LOG OUT BUTTON  ------------->
+        <div class="container" style="padding-top:50px">
+                <a class="waves-effect waves-light btn" onClick="logOut()">Log Out</a>
+          </div>
+
+          <!-------------------- MAIN BODYY ---------------------->
         <div class="container">
             
             <h1 class="center">Welcome, Administrator</h1>
@@ -48,7 +51,6 @@
             <br><br><br><br>
             
             
-            <button onClick="foo()">idhar dabao</button>   
             
         </div>
         
@@ -63,22 +65,25 @@
 
     <!----------------------- FOOOOTER HEREEE --------------->
 
-
-    <footer class="page-footer grey lighten-2 black-text">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="black-text">Automatic Attendance System</h5>
-                    <p class="black-text">TEXT HERE</p>
+    <footer class="page-footer black-text" style="background-color:rgba(66, 165, 245,1.0)">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="black-text">Automatic Attendance System</h5>
+                        <p class="black-text">Mozofest 2019 Hackathon, 30th-31st March, 2019</p>
+                    </div>
+                    <div class="col l2 s12 offset-l4">
+                        <br>
+                            <a class="waves-effect waves-light btn-large" onclick="exitfxn()">Exit Panel</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="footer-copyright grey black-text">
-            <div class="container center">
-                &copy; 2019 GullyBoys
+            <div class="footer-copyright black-text" style="background-color:#1E88E5">
+                <div class="container center">
+                    &copy; 2019 GullyBoys
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 
 
 
