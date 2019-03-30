@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Gully Boys - Attendance System
+        </title>
+        <script src="js/jquery.js"></script>
+        <script src="js/materialize.min.js"></script>
+        <link rel="stylesheet" href="css/materialize.min.css">
+        
+        <style>
+            body {
+                display: flex;
+                min-height: 100vh;
+                flex-direction: column;
+            }
+
+            main {
+                flex: 1 0 auto;
+            }
+            label{
+                font-size: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="index.html" class="brand-logo"><i class="material-icons">speaker_notes</i>Logo</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="index.html">Sass</a></li>
+                </ul>
+            </div>
+        </nav>
+             
+        <div class="container" style="padding-top: 200px; padding-bottom: 200px">
+                <div class="row center">
+                    <h4>All field are mandatory</h4>
+                </div>
+                <div class="row">
+                    <form class="col s6">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input placeholder="Ex. RA1711003010350" id="studentregno" type="text">
+                                <label class="red-text">Student's Registration Number*</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input type="text" id="studentname" placeholder="Ex. Elon Musk">
+                                <label class="red-text">Student's Full Name</label>
+                            </div>
+                        </div>
+                        <a class="waves-effect waves-light btn-large" onclick="M.toast({html: 'Logging you in!'}); foo()">Submit details</a>
+                    </form>
+            
+
+                    <label class="btn white" style="background-image:url('img/dp.png'); height: 400px; width:400px;background-repeat: no-repeat;background-size: cover">
+                        <input type="file" id="file" style="visibility:hidden">
+                        <!-- <img class="col s6" src="img/dp.png" alt="user image" style="height:50%; width:auto"> -->
+                    </label>
+                    
+                </div>
+                    
+                
+            
+    
+    
+    
+    
+            </div>  <!--CONTAINER DIV-->
+        
+    
+    </body>
+
+
+
+
+
+
+
+    <!----------------------- FOOOOTER HEREEE --------------->
+
+
+    <footer class="page-footer grey lighten-2 black-text">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="black-text">Automatic Attendance System</h5>
+                    <p class="black-text">TEXT HERE</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright grey black-text">
+            <div class="container center">
+                &copy; 2019 GullyBoys
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+<!--------------------- SCRIPTING TIME -------------->
+
+
+        <!-- ACTIVATE DATABASE -->
+        <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+        <!-- normal script imports etc  -->
+        <script src="js/jquery.js"></script> 
+        
+        <!-- Insert this line after script imports -->
+        <script>if (window.module) module = window.module;</script>
+
+        <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+        
+        <script src="js/index.js"></script>
+
+        <script>
+            require('./renderer.js');
+        </script>
+
+</html>
