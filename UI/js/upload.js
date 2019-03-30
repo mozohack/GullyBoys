@@ -7,6 +7,7 @@ var config = {
     storageBucket: 'gs://hackathon-mozofest-2019.appspot.com/'
 };
 firebase.initializeApp(config);
+var database = firebase.database();
 
 function logOut(){
 	console.log("Attempting Sign Out");
@@ -19,8 +20,10 @@ function logOut(){
 }
 
 function uploadFile(){
-    var filename = selectedFile.name;
-    var storageRef = firebase.storage().ref('/testImages/'+ filename); 
+	var filename = selectedFile.name;
+	var regno = document.getElementById('studentregno').value;
+	var sName = document.getElementById('studentname').value;
+    var storageRef = firebase.storage().ref('/' + regno + '/' + filename); 
     var uploadTask = storageRef.put(selectedFile);
     
 
@@ -28,7 +31,8 @@ function uploadFile(){
         // Observe state change events such as progress, pause, and resume
         // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
         var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log('Upload is ' + progress + '% done');
+		console.log('Upload is ' + progress + '% done');
+		document.getElementById("bar").style.width=progress+100;
         switch (snapshot.state) {
           	case firebase.storage.TaskState.PAUSED: // or 'paused'
 	            console.log('Upload is paused');
@@ -44,12 +48,31 @@ function uploadFile(){
         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
         	uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
 			  console.log('File available at', downloadURL);
-			  M.toast({html:'Data has been uploaded to the server'});
+			  document.getElementById("bar").style.width="100%";
+			  writeUserData(regno,sName);
+			  M.toast({html:'Connecting to the network.'});
         });
-      });
+	  });
+	  
+	  
 };
 
-
+function writeUserData(studregno, studname) {
+	firebase.database().ref('Students/' + studregno).set({
+		RegNo: studregno,
+	  	name: studname,
+		hours_conducted: 0,
+		hours_present:0,
+		dayorder:{
+			DO1:0,
+			DO2:0,
+			DO3:0,
+		},
+	
+	});
+	console.log("All Data Sent Successfully");
+	M.toast({html:'Data has been uploaded to the server! You can continue adding more'});
+}
 
 $("#file").on("change",function(event){
     selectedFile = event.target.files[0];   
