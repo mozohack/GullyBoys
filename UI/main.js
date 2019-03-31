@@ -6,15 +6,18 @@ let win;
 
 function CreateWindow(){
     win = new BrowserWindow({width:1920, height:1080, icon:__dirname+'/icon.png'});
+    
     win.loadURL(url.format({
         pathname: path.join(__dirname, 'index.html'),
         protocol: 'file:',
         slashes: true
     }));
+    
+
     console.log("WINDOWS CREATED");
     
     // DEVELOPER TOOLS KE LIYE
-    // win.webContents.openDevTools(); 
+    win.webContents.openDevTools(); 
     
     win.on('closed',() => {
         win=null;

@@ -1,3 +1,33 @@
+var fs = require('fs');	
+
+function foo(){	
+	var str = document.getElementById('studentregno').value;
+	console.log("attempting file write");
+	fs.writeFileSync('py/helper.txt', str, function (err,fd) {
+  	if (err) throw err;
+	  fs.close(fd, function(error) {
+		if (error) {
+			console.error("close error:  " + error.message);
+		} else {
+			console.log("File was closed!");
+			}
+	});
+	}); 
+	// fs.close(fd, function(error) {
+	// 	if (error) {
+	// 		console.error("close error:  " + error.message);
+	// 	} else {
+	// 		console.log("File was closed!");
+	// 		}
+	// });
+	
+    var python = require('child_process').spawn('python', ['py/capture.py']);
+    python.stdout.on('data',function(data){
+        console.log("data: ",data.toString('utf8')+ " from Python ");
+    });
+}
+
+//manual file upload
 var selectedFile;
 
 var config = {
@@ -57,10 +87,13 @@ function uploadFile(){
 		
 };
 
-function writeUserData(studregno, studname) {
+function writeUserData() {
+	
+	var studregno = document.getElementById('studentregno').value;
+	var studname = document.getElementById('studentname').value;
 	firebase.database().ref('Students/' + studregno).set({
 		RegNo: studregno,
-			name: studname,
+		name: studname,
 		hours_conducted: 0,
 		hours_present:0,
 		dayorder:{
