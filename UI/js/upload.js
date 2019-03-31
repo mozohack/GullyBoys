@@ -13,20 +13,19 @@ function foo(){
 			}
 	});
 	}); 
-	// fs.close(fd, function(error) {
-	// 	if (error) {
-	// 		console.error("close error:  " + error.message);
-	// 	} else {
-	// 		console.log("File was closed!");
-	// 		}
-	// });
 	
     var python = require('child_process').spawn('python', ['py/capture.py']);
     python.stdout.on('data',function(data){
         console.log("data: ",data.toString('utf8')+ " from Python ");
     });
 }
-
+function Train(){
+	console.log("JS Train running");
+	var python = require('child_process').spawn('python', ['py/train.py']);
+    python.stdout.on('data',function(data){
+        console.log("data: ",data.toString('utf8')+ " from Python ");
+    });
+}
 //manual file upload
 var selectedFile;
 

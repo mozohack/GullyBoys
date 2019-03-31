@@ -10,14 +10,14 @@ import time
 import os
 curd = os.getcwd()
 print("in Python file now")
+
 f = open("py/helper.txt", "r")
 name = f.read()
 print(name)
 f.close()
-# with open('helper.txt', 'r') as file:
-#     name=file.read()
+
 print("FILE READ COMPLETE")
-path = r"{}\{}".format(curd,name)
+path = r"{}\assets\data\{}".format(curd,name)
 try:  
     os.mkdir(path)
 except OSError:  
@@ -30,7 +30,7 @@ count=0
 while count<10:
     
     rat, frame = cap.read()
-    cv2.imwrite("{}/{}{}.jpg".format(path,name,count), frame)
+    cv2.imwrite(r"{}\{}{}.jpg".format(path,name,count), frame)
     count+=1
     cv2.imshow('img',frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
