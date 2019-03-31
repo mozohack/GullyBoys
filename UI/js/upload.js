@@ -32,8 +32,9 @@ function Train(){
 	var python = require('child_process').spawn('python', ['py/train.py']);
     python.stdout.on('data',function(data){
 		console.log("data: ",data.toString('utf8')+ " from Python ");
-		M.toast({html:'Job has ended. You may check the /assests/models directory for results.'});
+		M.toast({html:'Please upload the file found in /assests/models directory.'});
 		document.getElementById('preloader').style.visibility='hidden';	
+		document.getElementById('trainfield').style.backgroundColor='red';
     });
 }
 //manual file upload
@@ -59,10 +60,11 @@ function logOut(){
 }
 
 function uploadFile(){
+	M.toast({html:'Starting with the upload task'});
 	var filename = selectedFile.name;
-	var regno = document.getElementById('studentregno').value;
-	var sName = document.getElementById('studentname').value;
-		var storageRef = firebase.storage().ref('/' + regno + '/' + filename); 
+	// var regno = document.getElementById('studentregno').value;
+	// var sName = document.getElementById('studentname').value;
+		var storageRef = firebase.storage().ref('/' + 'models' + '/' + filename); 
 		var uploadTask = storageRef.put(selectedFile);
 		
 
@@ -88,8 +90,8 @@ function uploadFile(){
 					uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
 				console.log('File available at', downloadURL);
 				document.getElementById("bar").style.width="100%";
-				writeUserData(regno,sName);
-				M.toast({html:'Connecting to the network.'});
+				// writeUserData(regno,sName);
+				M.toast({html:'Upload Task Successful!'});
 				});
 		});
 		
@@ -124,6 +126,7 @@ function writeUserData() {
 }
 
 $("#file").on("change",function(event){
-		selectedFile = event.target.files[0];   
+		selectedFile = event.target.files[0];
+		uploadFile();
 });
 
