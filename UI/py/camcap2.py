@@ -30,11 +30,13 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 # In[8]:
 
 import shutil
-folder='{}/assets/test'.format(curd)
+folder='{}/assets/test/'.format(curd)
+dest='{}/assets/History/'.format(curd)
 for i in os.listdir(folder):
-    file_path=os.path.join(folder,i)
-    if os.path.isfile(file_path):
-        os.remove(file_path)
+    shutil.move(folder+i,dest)
+    # file_path=os.path.join(folder,i)
+    # if os.path.isfile(file_path):
+    #     os.remove(file_path)
 # In[9]:
 
 
@@ -51,7 +53,7 @@ while count<10:
     cv2.imshow('img',frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
-    time.sleep(1)    
+    time.sleep(5)    
 
 
 cap.release()    
