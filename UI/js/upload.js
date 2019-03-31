@@ -2,28 +2,38 @@ var fs = require('fs');
 
 function foo(){	
 	var str = document.getElementById('studentregno').value;
-	console.log("attempting file write");
-	fs.writeFileSync('py/helper.txt', str, function (err,fd) {
-  	if (err) throw err;
-	  fs.close(fd, function(error) {
-		if (error) {
-			console.error("close error:  " + error.message);
-		} else {
-			console.log("File was closed!");
-			}
-	});
-	}); 
-	
-    var python = require('child_process').spawn('python', ['py/capture.py']);
-    python.stdout.on('data',function(data){
-        console.log("data: ",data.toString('utf8')+ " from Python ");
-    });
+	if(str.length>1){
+		console.log("Entered Reg. No. is " + str);
+		console.log("attempting file write");
+		fs.writeFileSync('py/helper.txt', str, function (err,fd) {
+		  if (err) throw err;
+		  fs.close(fd, function(error) {
+			if (error) {
+				console.error("close error:  " + error.message);
+			} else {
+				console.log("File was closed!");
+				}
+		});
+		}); 
+		
+		var python = require('child_process').spawn('python', ['py/capture.py']);
+		python.stdout.on('data',function(data){
+			console.log("data: ",data.toString('utf8')+ " from Python ");
+		});
+	}
+	else{
+		M.toast({html:'All field are mandatory!'});
+	}
 }
 function Train(){
 	console.log("JS Train running");
+	document.getElementById('preloader').style.visibility="visible";
+	M.toast({html:'Training has begun, it might take some time. You will be informed when the job is complete.'});
 	var python = require('child_process').spawn('python', ['py/train.py']);
     python.stdout.on('data',function(data){
-        console.log("data: ",data.toString('utf8')+ " from Python ");
+		console.log("data: ",data.toString('utf8')+ " from Python ");
+		M.toast({html:'Job has ended. You may check the /assests/models directory for results.'});
+		document.getElementById('preloader').style.visibility='hidden';	
     });
 }
 //manual file upload
@@ -90,20 +100,27 @@ function writeUserData() {
 	
 	var studregno = document.getElementById('studentregno').value;
 	var studname = document.getElementById('studentname').value;
-	firebase.database().ref('Students/' + studregno).set({
-		RegNo: studregno,
-		name: studname,
-		hours_conducted: 0,
-		hours_present:0,
-		dayorder:{
-			DO1:0,
-			DO2:0,
-			DO3:0,
-		},
+	if(studregno.length>2 && studname.length>2){
+		firebase.database().ref('Students/' + studregno).set({
+			RegNo: studregno,
+			name: studname,
+			hours_conducted: 0,
+			hours_present:0,
+			dayorder:{
+				DO1:0,
+				DO2:0,
+				DO3:0,
+			},
+		
+		});
+		console.log("All Data Sent Successfully");
+		M.toast({html:'Data has been uploaded to the server! You can continue adding more'});
+	}
+	else{
+		console.log("Incorrect data detected, warning user");
+		M.toast({html:'All fields are mandatory'});
+	}
 	
-	});
-	console.log("All Data Sent Successfully");
-	M.toast({html:'Data has been uploaded to the server! You can continue adding more'});
 }
 
 $("#file").on("change",function(event){

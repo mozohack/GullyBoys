@@ -36,17 +36,21 @@
         <div class="progress">
                 <div class="determinate" style="width:0%" id="bar"></div>
         </div>
+        
+        
         <!------------------------- LOG OUT BUTTON  ------------->
         <div class="container" style="padding-top:50px">
                 <a class="waves-effect waves-light btn" onClick="logOut()">Log Out</a>
           </div>
              <!----------------------------- MAIN BODY ------------------->
-        <div class="container" style="padding-top: 100px; padding-bottom: 100px">
+        <div class="container" style="margin-top: 40px">
                 <div class="row center">
-                    <h4>All field are mandatory</h4>
+                    <h4>Dear Staff member, all field shown here are mandatory. Please fill with caution and only click the train button 
+                        when all students have given their details.
+                    </h4>
                 </div>
-                <div class="row">
-                    <form class="col s6">
+                <div class="row" style="margin-top:50px">
+                    <form class="col s6" style="margin-top:25px">
                         <div class="row">
                             <div class="input-field col s6">
                                 <input placeholder="Ex. RA1711003010350" id="studentregno" type="text">
@@ -64,7 +68,7 @@
                     </form>
              
              <!----------------------------- IMAGE HERE ----------------------->
-                    <label class="btn white" style="background-image:url('img/dp.png'); height: 400px; width:400px;background-repeat: no-repeat;background-size: cover" onclick="foo()">
+                    <label class="btn white" style="background-image:url('img/user.png'); height: 400px; width:400px;background-repeat: no-repeat;background-size: cover" onclick="foo()">
                     </label>
                     
                 </div>
@@ -80,6 +84,10 @@
     
     
             </div>  <!--CONTAINER DIV-->
+            <!--------------------PRELOADER HERE ---------------->
+        <div class="progress" id="preloader" style="visibility:hidden">
+            <div class="indeterminate"></div>
+        </div>
         
     
     </body>
@@ -92,7 +100,7 @@
 
     <!----------------------- FOOOOTER HEREEE --------------->
 
-    <footer class="page-footer black-text" style="background-color:rgba(66, 165, 245,1.0)">
+    <footer class="page-footer black-text" style="background-color:rgba(66, 165, 245,1.0);bottom:0;position:absolute; width: 100%">
             <div class="container">
                 <div class="row">
                     <div class="col l6 s12">
