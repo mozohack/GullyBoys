@@ -1,6 +1,6 @@
 var options = {};
 var elems = {};
-
+var fs = require('fs')
 var config = {
     apiKey: "AIzaSyAlkTeBTBPtnVAaOnNmwiwsFVDIWKhfp5M",
     authDomain: "hackathon-mozofest-2019.firebaseapp.com",
@@ -57,5 +57,41 @@ function logOut(){
 	    console.log("Error singing out");
   	});
 }
+function pyCam(){
+    
+    console.log("Camera Input Running");
+    M.toast({html:'Opening Camera Feed'});
+    var python = require('child_process').spawn('python', ['py/camcap2.py']);
+    python.stdout.on('data',function(data){
+        console.log("data: ",data.toString('utf8')+ " from Python ");
+        
+        
+    });
+}
 
+function pyMobile(){
+
+    var str = document.getElementById('textField').value;
+    console.log("Sending IP as : " + str);
+		console.log("attempting file write");
+		fs.writeFileSync('py/url.txt', str, function (err,fd) {
+		  if (err) throw err;
+		  fs.close(fd, function(error) {
+			if (error) {
+				console.error("close error:  " + error.message);
+			} else {
+				console.log("File was closed!");
+				}
+		});
+    });   
+    console.log("Camera Input Running");
+    M.toast({html:'Opening Camera Feed'});
+    var python = require('child_process').spawn('python', ['py/camcap2.py']);
+    python.stdout.on('data',function(data){
+        console.log("data: ",data.toString('utf8')+ " from Python ");
+        
+        
+    });
+
+}
 console.log("JS ready");

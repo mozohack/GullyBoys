@@ -36,7 +36,7 @@
           <!-------------------- MAIN BODYY ---------------------->
         <div class="container">
             
-            <h1 class="center">Welcome, Administrator</h1>
+            <h1 class="center">Welcome, Administrator.</h1>
 
             <br><br><br><br>
             <h4 class="center">Choose the day order for which you want to see the student statistics.</h4>
@@ -53,13 +53,10 @@
             
             <div class="row">
                 <div class="col offset-s2">
-                    <a class="waves-effect waves-light btn-large" onclick="exitfxn()">Capture with Camera</a>
+                    <a class="waves-effect waves-light btn-large" onclick="pyCam()">Capture with Camera</a>
                 </div>
-                <div class="col offset-s2">
-                    <a class="waves-effect waves-light btn-large" onclick="exitfxn()">Capture with Mobile Device</a>
-                </div>
+                
             </div>
-
         </div>
         
           
@@ -119,4 +116,9 @@
             require('./renderer.js');
         </script>
 
+        <script>
+            function exitfxn(){
+            window.close();
+        }
+    </script>
 </html>

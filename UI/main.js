@@ -17,7 +17,7 @@ function CreateWindow(){
     console.log("WINDOWS CREATED");
     
     // DEVELOPER TOOLS KE LIYE
-    win.webContents.openDevTools(); 
+    // win.webContents.openDevTools(); 
     
     win.on('closed',() => {
         win=null;
